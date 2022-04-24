@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { BoardsService } from './boards.service';
 import { Board } from './board.model';
 
@@ -9,5 +9,14 @@ export class BoardsController {
   @Get('/')
   getAllBoard(): Board[] {
     return this.boardsService.getAllBoards();
+  }
+
+  // 전체를 받아오고 싶으면 @Body() body 같이 작성함
+  @Post()
+  createBoard(
+    @Body('title') title: string,
+    @Body('description') description: string,
+  ): Board {
+    return this.boardsService.createBoards(title, description);
   }
 }
