@@ -1,12 +1,5 @@
-import {
-  Body,
-  Controller,
-  Post,
-  UsePipes,
-  ValidationPipe,
-} from '@nestjs/common';
-import { createSecureServer } from 'http2';
-import { CreateBoardDto } from 'src/boards/dto/create-board.dto';
+import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+
 import { AuthService } from './auth.service';
 import { AuthCredentialDto } from './dto/auth-credential.dto.ts';
 
@@ -18,5 +11,10 @@ export class AuthController {
   @UsePipes(ValidationPipe)
   signUp(@Body() authCredentialDto: AuthCredentialDto): Promise<void> {
     return this.authService.signUp(authCredentialDto);
+  }
+
+  @Post('/singin')
+  singIn(@Body() authCredentialDto: AuthCredentialDto): Promise<string> {
+    return this.authService.singIn(authCredentialDto);
   }
 }
