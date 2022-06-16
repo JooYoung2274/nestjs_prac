@@ -22,14 +22,19 @@ export class BoardsService {
     return result;
   }
 
+  async getAllBoards(user: User): Promise<Board[]> {
+    const result = await this.boardReposity.findAllBoardsByUserId(user);
+    return result;
+  }
+
   async createBoard(createBoardDto: CreateBoardDto, user: User): Promise<Board> {
     const result = await this.boardReposity.createBoard(createBoardDto, user);
 
     return result;
   }
 
-  async deleteBoard(id: number): Promise<void> {
-    const result = await this.boardReposity.deleteBoardById(id);
+  async deleteBoard(id: number, user: User): Promise<void> {
+    const result = await this.boardReposity.deleteBoardById(id, user);
 
     if (result.affected === 0) {
       throw new NotFoundException(`Can't find Board with id ${id}`);

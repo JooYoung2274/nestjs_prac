@@ -12,6 +12,14 @@ export class BoardRepository extends Repository<Board> {
     return result;
   }
 
+  async findAllBoardsByUserId(user: User): Promise<Board[]> {
+    const query = this.createQueryBuilder('board');
+    query.where('board.userId = :userId', { userId: user.id });
+
+    const result = await query.getMany();
+    return result;
+  }
+
   async createBoard(createBoardDto: CreateBoardDto, user: User): Promise<Board> {
     const { title, description } = createBoardDto;
 
@@ -27,8 +35,8 @@ export class BoardRepository extends Repository<Board> {
     return result;
   }
 
-  async deleteBoardById(id: number): Promise<DeleteResult> {
-    const result = this.delete(id);
+  async deleteBoardById(id: number, user: User): Promise<DeleteResult> {
+    const result = this.delete({ id, user });
     return result;
   }
 

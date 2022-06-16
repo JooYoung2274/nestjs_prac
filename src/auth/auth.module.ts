@@ -11,7 +11,7 @@ import { JwtStrategy } from './jwt.strategy';
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt' }), //passport, jwt import
     JwtModule.register({
-      secret: '시크릿키입력. 환경변수로 숨김',
+      secret: process.env.JWT_SECRETKEY,
       signOptions: {
         expiresIn: 60 * 60,
       },

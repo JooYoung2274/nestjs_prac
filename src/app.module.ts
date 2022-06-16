@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { BoardsModule } from './boards/boards.module';
+import { BoardsModule } from './boards/board.module';
 import { typeORMconfig } from './configs/typeorm.config';
 
 @Module({
