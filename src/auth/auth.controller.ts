@@ -3,6 +3,8 @@ import { AuthGuard } from '@nestjs/passport';
 
 import { AuthService } from './auth.service';
 import { AuthCredentialDto } from './dto/auth-credential.dto.ts';
+import { GetUser } from './get-user.decorator';
+import { User } from './user.entity';
 
 @Controller('auth')
 export class AuthController {
@@ -22,9 +24,10 @@ export class AuthController {
   //test용 api.
   //jwt토큰 인증 값이 req에 담기는지 확인하는 api
   //UseGuards는 인증 middleware
+  //custom decorator 이용해서 바로 user로 받아올 수 있음
   @Post('/test')
   @UseGuards(AuthGuard())
-  test(@Req() req) {
-    console.log(req);
+  test(@GetUser() user: User) {
+    console.log(user);
   }
 }

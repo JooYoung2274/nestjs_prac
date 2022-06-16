@@ -1,9 +1,5 @@
-import {
-  DeleteResult,
-  EntityRepository,
-  Repository,
-  UpdateResult,
-} from 'typeorm';
+import { User } from 'src/auth/user.entity';
+import { DeleteResult, EntityRepository, Repository, UpdateResult } from 'typeorm';
 import { BoardStatus } from './board-status.enum';
 import { Board } from './board.entity';
 import { CreateBoardDto } from './dto/create-board.dto';
@@ -16,13 +12,14 @@ export class BoardRepository extends Repository<Board> {
     return result;
   }
 
-  async createBoard(createBoardDto: CreateBoardDto): Promise<Board> {
+  async createBoard(createBoardDto: CreateBoardDto, user: User): Promise<Board> {
     const { title, description } = createBoardDto;
 
     const result = this.create({
       title,
       description,
       status: BoardStatus.PUBLIC,
+      user,
     });
 
     await result.save();
