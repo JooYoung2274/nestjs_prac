@@ -14,7 +14,11 @@ export class AuthService {
   ) {}
 
   async signUp(authCredentialDto: AuthCredentialDto): Promise<void> {
-    return await this.userRepository.createUser(authCredentialDto);
+    const { username, password } = authCredentialDto;
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(password, salt);
+    const result = await this.userRepository.createUser(username, hashedPassword);
+    return result;
   }
 
   async singIn(authCredentialDto: AuthCredentialDto): Promise<{ accessToken: string }> {

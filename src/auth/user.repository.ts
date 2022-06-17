@@ -1,17 +1,10 @@
 import { ConflictException, InternalServerErrorException } from '@nestjs/common';
 import { EntityRepository, Repository } from 'typeorm';
-import { AuthCredentialDto } from './dto/auth-credential.dto.ts';
 import { User } from './user.entity';
-import * as bcrypt from 'bcryptjs';
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
-  async createUser(authCredentialDto: AuthCredentialDto): Promise<void> {
-    const { username, password } = authCredentialDto;
-
-    const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(password, salt);
-
+  async createUser(username: string, hashedPassword: string): Promise<void> {
     const user = this.create({ username, password: hashedPassword });
 
     try {
@@ -25,7 +18,12 @@ export class UserRepository extends Repository<User> {
     }
   }
 
-  async findUserByUsername(username: string) {
-    return await this.findOne(username);
+  async findUserByUsername(username: string): Promise<User> {
+    const result = await this.findOne(username);
+    return result;
   }
 }
+
+// repository layer에서 DB에 접근하는 모든 쿼리를 결정하는게 맞는건지?
+// => 솔직히 정답은 모르겠지만, 개인적으로는 DB에 접근하는 모든 쿼리는 repository layer에 존재해야 한다고 생각함.
+// => 이유는 여러가지가 있겠지만, service layer에 쿼리가 존재하게 되면 테스트 코드는 어떻게 작성해야 할지 생각이 안남.
