@@ -10,8 +10,3 @@ export interface BoardService {
   deleteBoard(id: number, user: User): Promise<void>;
   updateBoardStatus(id: number, status: BoardStatus): Promise<Board>;
 }
-
-export interface BoardRepo {
-  findBoardById(id: number): Promise<Board>;
-  findAllBoardsByUserId(user: User): Promise<Board[]>;
-}
