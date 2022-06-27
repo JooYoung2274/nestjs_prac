@@ -6,8 +6,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Board } from './board.entity';
 import { User } from 'src/auth/user.entity';
 
+import { BoardService } from 'src/ports/board.interface';
+
 @Injectable()
-export class BoardsService {
+export class BoardsService implements BoardService {
   constructor(
     @InjectRepository(BoardRepository) // controller에 service 주입할때와 다르게 repo를 service에 주입하려면 요 데코레이터 써야함.
     private boardReposity: BoardRepository,
