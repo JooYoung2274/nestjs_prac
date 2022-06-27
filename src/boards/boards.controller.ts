@@ -8,12 +8,14 @@ import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from 'src/auth/get-user.decorator';
 import { User } from 'src/auth/user.entity';
 
+import { BoardService } from 'src/ports/board.interface';
+
 @Controller('boards') //http://localhost:3000/boards
 @UseGuards(AuthGuard())
 export class BoardsController {
   private logger = new Logger('BoardsController');
 
-  constructor(private boardsService: BoardsService) {}
+  constructor(private boardsService: BoardService) {}
 
   @Get('/:id')
   getBoardById(@Param('id') id: number): Promise<Board> {
