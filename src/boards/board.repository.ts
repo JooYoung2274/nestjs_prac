@@ -3,10 +3,11 @@ import { DeleteResult, EntityRepository, Repository, UpdateResult } from 'typeor
 import { BoardStatus } from './board-status.enum';
 import { Board } from './board.entity';
 import { CreateBoardDto } from './dto/create-board.dto';
+import { IBoardRepository } from 'src/ports/board.interface';
 
 @EntityRepository(Board)
-export class BoardRepository extends Repository<Board> {
-  async findBoardById(id: number) {
+export class BoardRepository extends Repository<Board> implements IBoardRepository {
+  async findBoardById(id: number): Promise<Board> {
     const result = await this.findOne(id);
 
     return result;
