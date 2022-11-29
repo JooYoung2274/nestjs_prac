@@ -1,7 +1,7 @@
-import { User } from 'src/auth/user.entity';
-import { BoardStatus } from 'src/boards/board-status.enum';
-import { Board } from 'src/boards/board.entity';
-import { CreateBoardDto } from 'src/boards/dto/create-board.dto';
+import { User } from '../domain/auth/user.entity';
+import { BoardStatus } from '../domain/boards/board-status.enum';
+import { Board } from '../domain/boards/board.entity';
+import { CreateBoardDto } from '../domain/boards/dto/create-board.dto';
 import { DeleteResult } from 'typeorm';
 
 export interface IBoardService {

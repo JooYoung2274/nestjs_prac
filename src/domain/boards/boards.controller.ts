@@ -5,8 +5,8 @@ import { CreateBoardDto } from './dto/create-board.dto';
 import { BoardStatusValidationPipe } from './pipe/board-status-validation.pipe';
 import { Board } from './board.entity';
 import { AuthGuard } from '@nestjs/passport';
-import { GetUser } from 'src/auth/get-user.decorator';
-import { User } from 'src/auth/user.entity';
+import { GetUser } from '../auth/get-user.decorator';
+import { User } from '../auth/user.entity';
 
 @Controller('boards') //http://localhost:3000/boards
 @UseGuards(AuthGuard())

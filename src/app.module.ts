@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from './auth/auth.module';
-import { BoardsModule } from './boards/board.module';
+import { AuthModule } from './domain/auth/auth.module';
+import { BoardsModule } from './domain/boards/board.module';
 import { typeORMconfig } from './configs/typeorm.config';
 
 // 어차피 App.module에 import해야 하는데 왜

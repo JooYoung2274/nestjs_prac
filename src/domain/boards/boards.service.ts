@@ -4,12 +4,12 @@ import { CreateBoardDto } from './dto/create-board.dto';
 import { BoardRepository } from './board.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Board } from './board.entity';
-import { User } from 'src/auth/user.entity';
+import { User } from '../auth/user.entity';
 
-import { BoardService } from 'src/ports/board.interface';
+import { IBoardService } from '../../ports/board.interface';
 
 @Injectable()
-export class BoardsService implements BoardService {
+export class BoardsService implements IBoardService {
   constructor(
     @InjectRepository(BoardRepository) // controller에 service 주입할때와 다르게 repo를 service에 주입하려면 요 데코레이터 써야함.
     private boardReposity: BoardRepository,

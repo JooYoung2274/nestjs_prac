@@ -1,4 +1,4 @@
-import { User } from 'src/auth/user.entity';
+import { User } from '../auth/user.entity';
 import { DeleteResult, EntityRepository, Repository, UpdateResult } from 'typeorm';
 import { BoardStatus } from './board-status.enum';
 import { Board } from './board.entity';
