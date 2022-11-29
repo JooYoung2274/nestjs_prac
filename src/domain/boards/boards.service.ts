@@ -1,18 +1,16 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { BoardStatus } from './board-status.enum';
 import { CreateBoardDto } from './dto/create-board.dto';
-import { BoardRepository } from '../../adapter/board/repository/board.repository';
-import { InjectRepository } from '@nestjs/typeorm';
 import { Board } from '../entity/board.entity';
 import { User } from '../entity/user.entity';
 
-import { IBoardService } from '../../ports/board.interface';
+import { IBoardRepository, IBoardService } from '../../ports/board.interface';
 
 @Injectable()
 export class BoardsService implements IBoardService {
   constructor(
-    @InjectRepository(BoardRepository) // controller에 service 주입할때와 다르게 repo를 service에 주입하려면 요 데코레이터 써야함.
-    private boardReposity: BoardRepository,
+    @Inject(IBoardRepository)
+    private boardReposity: IBoardRepository,
   ) {}
 
   async getBoardById(id: number): Promise<Board> {

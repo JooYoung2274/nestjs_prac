@@ -1,9 +1,9 @@
 import { User } from '../entity/user.entity';
 import { BaseEntity, Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { BoardStatus } from './board-status.enum';
+import { BoardStatus } from '../boards/board-status.enum';
 
 @Entity()
-export class Board extends BaseEntity {
+export class Board {
   @PrimaryGeneratedColumn()
   id: number;
 
