@@ -1,6 +1,6 @@
-import { User } from '../entity/user.entity';
+import { User } from '../../../auth/user.entity';
 import { BaseEntity, Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { BoardStatus } from '../boards/board-status.enum';
+import { BoardStatus } from '../../domain/board-status.enum';
 
 @Entity()
 export class Board {

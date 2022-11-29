@@ -1,9 +1,10 @@
 import { Body, Controller, Post, Req, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { AuthService } from '../../../domain/auth/auth.service';
-import { AuthCredentialDto } from '../../../domain/auth/dto/auth-credential.dto.ts';
-import { GetUser } from '../../../common/decorators/get-user.decorator';
-import { User } from '../../../domain/entity/user.entity';
+import { AuthService } from './auth.service';
+
+import { GetUser } from '../common/decorators/get-user.decorator';
+import { User } from './user.entity';
+import { AuthCredentialDto } from './dto/auth-credential.dto.ts';
 
 @Controller('auth')
 export class AuthController {
