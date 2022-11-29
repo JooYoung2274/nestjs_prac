@@ -1,13 +1,12 @@
-Nest.js_Prac
+# hexagonal_architecture_example_Nest.js
 
-- nest_prac branch는 nest를 이용한 단순 CRUD, 인증 구현 연습.
+### hexagonal architecture에 대한 설명 -> [<링크>](<https://jooyoung2274.github.io//%ED%97%A5%EC%82%AC%EA%B3%A0%EB%82%A0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-(%ED%8F%AC%ED%8A%B8-%EC%95%A4-%EC%96%B4%EB%8E%81%ED%84%B0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98)/>)
 
-- main branch에서 port and adapter 아키텍처로 변환해볼 예정
-  - controller와 service는 port를 통해서 주고 받게 변경함. (interface 사용)
-  - service와 repository도 port를 통하게 변경하고 싶었는데 Repository가 typeorm에 의존하고 있기 때문에 좀 더 고민 필요.
-  - implements 로 IBoardRepository 사용
+### 설명
 
-2022-11-29
+![](https://velog.velcdn.com/images/joo0/post/3d597ca8-6e3b-44b1-82eb-c96827250561/image.png)
 
-- 수직으로는 도메인 별로 구성
-- 해당 도메인 내에서 계층화 하고, port and adapter 적용해서 나눠볼 예정
+- Nest 환경에서 hexagonal architecture 구현
+- 도메인(기능? 여기서는 board) 별로 adapters, domain으로 나눠서 구현
+- 비즈니스 로직은 service layer에 있고, 데이터베이스 쿼리들은 repository에 있음.
+  (위에 있는 사진이랑 좀 다르게 구현. 사진은 서비스를 포트로 사용하는 것 처럼 보이는데 실제로는 interface 구현해서 포트로 사용하고 서비스 계층은 중간 어플리 케이션에 넣음)
