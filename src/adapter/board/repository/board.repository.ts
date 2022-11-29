@@ -1,8 +1,8 @@
-import { User } from '../auth/user.entity';
+import { User } from '../../../domain/entity/user.entity';
 import { DeleteResult, EntityRepository, Repository, UpdateResult } from 'typeorm';
-import { BoardStatus } from './board-status.enum';
-import { Board } from './board.entity';
-import { CreateBoardDto } from './dto/create-board.dto';
+import { BoardStatus } from '../../../domain/boards/board-status.enum';
+import { Board } from '../../../domain/entity/board.entity';
+import { CreateBoardDto } from '../../../domain/boards/dto/create-board.dto';
 import { IBoardRepository } from 'src/ports/board.interface';
 
 @EntityRepository(Board)

@@ -1,6 +1,6 @@
-import { User } from '../domain/auth/user.entity';
+import { User } from '../domain/entity/user.entity';
 import { BoardStatus } from '../domain/boards/board-status.enum';
-import { Board } from '../domain/boards/board.entity';
+import { Board } from '../domain/entity/board.entity';
 import { CreateBoardDto } from '../domain/boards/dto/create-board.dto';
 import { DeleteResult } from 'typeorm';
 

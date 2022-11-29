@@ -1,12 +1,13 @@
 import { Body, Controller, Delete, Get, Logger, Param, ParseIntPipe, Patch, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
-import { BoardsService } from './boards.service';
-import { BoardStatus } from './board-status.enum';
-import { CreateBoardDto } from './dto/create-board.dto';
-import { BoardStatusValidationPipe } from './pipe/board-status-validation.pipe';
-import { Board } from './board.entity';
+import { BoardsService } from '../../../domain/boards/boards.service';
+import { BoardStatus } from '../../../domain/boards/board-status.enum';
+import { CreateBoardDto } from '../../../domain/boards/dto/create-board.dto';
+
 import { AuthGuard } from '@nestjs/passport';
-import { GetUser } from '../auth/get-user.decorator';
-import { User } from '../auth/user.entity';
+import { GetUser } from '../../../common/decorators/get-user.decorator';
+import { User } from '../../../domain/entity/user.entity';
+import { BoardStatusValidationPipe } from 'src/common/pipe/board-status-validation.pipe';
+import { Board } from 'src/domain/entity/board.entity';
 
 @Controller('boards') //http://localhost:3000/boards
 @UseGuards(AuthGuard())
