@@ -8,13 +8,17 @@ import { BoardStatusValidationPipe } from 'src/common/pipe/board-status-validati
 import { Board } from 'src/board/adapters/model/board.entity';
 import { BoardsService } from 'src/board/domain/boards.service';
 import { CreateBoardDto } from 'src/board/domain/dto/create-board.dto';
+import { IBoardService } from 'src/board/domain/inboundPorts/IBoardService';
 
 @Controller('boards')
 @UseGuards(AuthGuard())
 export class BoardsController {
   private logger = new Logger('BoardsController');
 
-  constructor(private boardsService: BoardsService) {}
+  constructor(
+    @Inject(IBoardService)
+    private boardsService: IBoardService,
+  ) {}
 
   @Get('/:id')
   getBoardById(@Param('id') id: number): Promise<Board> {

@@ -10,3 +10,5 @@ export interface IBoardService {
   deleteBoard(id: number, user: User): Promise<void>;
   updateBoardStatus(id: number, status: BoardStatus): Promise<Board>;
 }
+
+export const IBoardService = Symbol('IBoardService');
