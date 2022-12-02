@@ -12,3 +12,6 @@ export interface IBoardService {
 }
 
 export const IBoardService = Symbol('IBoardService');
+
+
+
