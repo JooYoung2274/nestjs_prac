@@ -1,6 +1,6 @@
 # hexagonal_architecture_example_Nest.js
 
-### hexagonal architecture에 대한 설명 -> [<링크>](https://joorrr.tistory.com/)
+### hexagonal architecture에 대한 설명 -> [<링크>](https://joorrr.tistory.com/6)
 
 ### 설명
 
